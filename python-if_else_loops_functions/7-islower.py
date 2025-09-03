@@ -1,9 +1,7 @@
 #!/usr/bin/python3
 def islower(c):
-    for i in c:        
-        if i == "":
-            return
-        elif i.islower():
-            return True
-        else:
-            return False
+    char_ascii = ord(c)
+    if char_ascii >= 97 and char_ascii <= 122:
+        return True
+    else:
+        return False

@@ -1,8 +1,7 @@
 #!/usr/bin/python3
-import hidden_4
-
-if __name__ == "__main__":
-    names = dir(hidden_4)
-    sorted_names = sorted(name for name in names if not name.startswith("__"))
-    for name in sorted_names:
-        print(name)
+if __name__ == "__main__":    
+    import hidden_4
+    name = dir(hidden_4)
+    for i in name:
+        if i[:2] != '__':
+            print("{:s}".format(i))

@@ -41,7 +41,6 @@
     Traceback (most recent call last):
     ValueError: cannot convert float NaN to integer
 
-    >>> add_integer(1**1000000, 2**100000)
+    >>> add_integer(float('inf'))
     Traceback (most recent call last):
-    ValueError: Exceeds the limit (4300) for integer string conversion; use sys.set_int_max_str_digits() to increase the limit
-    
+    OverflowError: cannot convert float infinity to integer

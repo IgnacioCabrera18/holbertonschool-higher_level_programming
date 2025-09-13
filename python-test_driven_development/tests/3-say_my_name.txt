@@ -17,3 +17,6 @@
     >>> say_my_name("Ignacio", "Federico", "Cabrera")
     Traceback (most recent call last):
     TypeError: say_my_name() takes from 1 to 2 positional arguments but 3 were given
+
+    >>> say_my_name("Bob")
+    My name is Bob

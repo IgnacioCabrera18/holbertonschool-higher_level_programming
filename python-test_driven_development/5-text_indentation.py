@@ -1,5 +1,10 @@
 #!/usr/bin/python3
+
+"""module of print text"""
+
+
 def text_indentation(text):
+    """print text with 2 new lines after each of these characters"""
     if not isinstance(text, str):
         raise TypeError("text must be a string")
     temp = ""

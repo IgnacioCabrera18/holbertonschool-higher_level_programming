@@ -44,3 +44,11 @@
     >>> my_list.append(hola)
     Traceback (most recent call last):
     NameError: name 'hola' is not defined
+
+    >>> my_list = MyList()
+    >>> print(my_list)
+    []
+    >>> my_list.print_sorted()
+    []
+    >>> print(my_list)
+    []

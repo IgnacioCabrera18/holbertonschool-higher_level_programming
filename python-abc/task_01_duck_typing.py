@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 
-from abc import ABC, abstractmethod
 import math
+from abc import ABC, abstractmethod
+
 
 class Shape(ABC):
     """"""
@@ -14,6 +15,7 @@ class Shape(ABC):
         pass
 
 class Circle(Shape):
+    """"""
     def __init__(self, radius):
         if not isinstance(radius, (int, float)) or radius <= 0:
             raise ValueError("Radius must be a positive number.")
@@ -26,6 +28,7 @@ class Circle(Shape):
         return 2 * math.pi * self.radius
 
 class Rectangle(Shape):
+    """"""
     def __init__(self, width, height):
         if not isinstance(width, (int, float)) or width <= 0:
             raise ValueError("Width must be a positive number.")

@@ -42,3 +42,21 @@ class Rectangle(Shape):
 def shape_info(shape):
     print(f"Area: {shape.area()}")
     print(f"Perimeter: {shape.perimeter()}")
+
+if __name__ == "__main__":
+    test_cases = [
+        ("Circle with radius 0", lambda: Circle(0)),
+        ("Circle with negative radius", lambda: Circle(-2)),
+        ("Rectangle with width 0", lambda: Rectangle(0, 5)),
+        ("Rectangle with negative height", lambda: Rectangle(3, -4)),
+        ("Valid Circle", lambda: Circle(2)),
+        ("Valid Rectangle", lambda: Rectangle(4, 5))
+    ]
+
+    for description, constructor in test_cases:
+        print(f"\nTesting: {description}")
+        try:
+            shape = constructor()
+            shape_info(shape)
+        except ValueError as e:
+            print(e)

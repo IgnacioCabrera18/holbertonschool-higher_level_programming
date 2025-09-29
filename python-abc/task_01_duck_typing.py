@@ -14,8 +14,6 @@ class Shape(ABC):
 
 class Circle(Shape):
     def __init__(self, radius):
-        if not isinstance(radius, (int, float)):
-            raise TypeError("Radius must be a number.")
         if radius <= 0:
             raise ValueError("Radius must be a positive number.")
         self.radius = radius
@@ -28,10 +26,6 @@ class Circle(Shape):
 
 class Rectangle(Shape):
     def __init__(self, width, height):
-        if not isinstance(width, (int, float)):
-            raise TypeError("Width must be a number.")
-        if not isinstance(height, (int, float)):
-            raise TypeError("Height must be a number.")
         if width <= 0 or height <= 0:
             raise ValueError("Width and height must be positive numbers.")
         self.width = width
@@ -46,21 +40,3 @@ class Rectangle(Shape):
 def shape_info(shape):
     print(f"Area: {shape.area()}")
     print(f"Perimeter: {shape.perimeter()}")
-
-if __name__ == "__main__":
-    test_cases = [
-        ("Circle radius 0", lambda: Circle(0)),
-        ("Circle negative radius", lambda: Circle(-5)),
-        ("Rectangle width 0", lambda: Rectangle(0, 5)),
-        ("Rectangle negative height", lambda: Rectangle(3, -4)),
-        ("Valid Circle", lambda: Circle(5)),
-        ("Valid Rectangle", lambda: Rectangle(3, 4)),
-    ]
-
-    for description, func in test_cases:
-        print(f"\nTesting: {description}")
-        try:
-            shape = func()
-            shape_info(shape)
-        except (ValueError, TypeError) as e:
-            print(e)

@@ -14,7 +14,9 @@ class Shape(ABC):
 
 class Circle(Shape):
     def __init__(self, radius):
-        if not isinstance(radius, (int, float)) or radius <= 0:
+        if not isinstance(radius, (int, float)):
+            raise TypeError("Radius must be a number.")
+        if radius <= 0:
             raise ValueError("Radius must be a positive number.")
         self.radius = radius
 
@@ -26,10 +28,12 @@ class Circle(Shape):
 
 class Rectangle(Shape):
     def __init__(self, width, height):
-        if not isinstance(width, (int, float)) or width <= 0:
-            raise ValueError("Width must be a positive number.")
-        if not isinstance(height, (int, float)) or height <= 0:
-            raise ValueError("Height must be a positive number.")
+        if not isinstance(width, (int, float)):
+            raise TypeError("Width must be a number.")
+        if not isinstance(height, (int, float)):
+            raise TypeError("Height must be a number.")
+        if width <= 0 or height <= 0:
+            raise ValueError("Width and height must be positive numbers.")
         self.width = width
         self.height = height
 
@@ -45,18 +49,18 @@ def shape_info(shape):
 
 if __name__ == "__main__":
     test_cases = [
-        ("Circle with radius 0", lambda: Circle(0)),
-        ("Circle with negative radius", lambda: Circle(-2)),
-        ("Rectangle with width 0", lambda: Rectangle(0, 5)),
-        ("Rectangle with negative height", lambda: Rectangle(3, -4)),
-        ("Valid Circle", lambda: Circle(2)),
-        ("Valid Rectangle", lambda: Rectangle(4, 5))
+        ("Circle radius 0", lambda: Circle(0)),
+        ("Circle negative radius", lambda: Circle(-5)),
+        ("Rectangle width 0", lambda: Rectangle(0, 5)),
+        ("Rectangle negative height", lambda: Rectangle(3, -4)),
+        ("Valid Circle", lambda: Circle(5)),
+        ("Valid Rectangle", lambda: Rectangle(3, 4)),
     ]
 
-    for description, constructor in test_cases:
+    for description, func in test_cases:
         print(f"\nTesting: {description}")
         try:
-            shape = constructor()
+            shape = func()
             shape_info(shape)
-        except ValueError as e:
+        except (ValueError, TypeError) as e:
             print(e)

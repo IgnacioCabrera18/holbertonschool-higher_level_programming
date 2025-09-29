@@ -16,6 +16,8 @@ class Shape(ABC):
 
 class Circle(Shape):
     def __init__(self, radius):
+        if not isinstance(radius, (int, float)) or radius <= 0:
+            raise ValueError("Radius must be a positive number.")
         self.radius = radius
 
     def area(self):

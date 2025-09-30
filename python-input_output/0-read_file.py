@@ -5,5 +5,5 @@
 
 def read_file(filename=""):
     """Function read a file"""
-    with open(filename, "r", encoding='UTF8') as f:
-        print(f.read())
+    with open(filename, encoding="utf-8") as f:
+        print(f.read(), end="")

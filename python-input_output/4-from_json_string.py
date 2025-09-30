@@ -5,5 +5,5 @@ import json
 
 
 def from_json_string(my_str):
-    """Function to return json.dumps"""
+    """Function to return json.loads"""
     return json.loads(my_str)

@@ -15,4 +15,3 @@ class Student:
         if isinstance(attrs, list):
             return {key: getattr(self, key) for key in attrs if hasattr(self, key)}
         return self.__dict__
-

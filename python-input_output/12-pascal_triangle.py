@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 
+"""Module pascal_triangle"""
+
+
 def pascal_triangle(n):
+    """Function pascal_triangle"""
     if n <= 0:
         return []
-
     triangle = []
-
     for i in range(n):
         act_row = [1] * (1 + i)
         if i > 1:

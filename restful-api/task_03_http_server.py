@@ -46,7 +46,7 @@ class SimpleAPIHandler(http.server.BaseHTTPRequestHandler):
             self.send_response(404)
             self.send_header("Content-type", "text/plain")
             self.end_headers()
-            self.wfile.write(b"Not Found")
+            self.wfile.write(b"404 Not Found")
 
 if __name__ == "__main__":
     with socketserver.TCPServer(("", PORT), SimpleAPIHandler) as httpd:

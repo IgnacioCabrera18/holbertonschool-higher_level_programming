@@ -24,6 +24,7 @@ if __name__ == "__main__":
             "WHERE name = '{}' "
             "ORDER BY id ASC".format(state_name_searched)
         )
+
         cursor.execute(query)
         states = cursor.fetchall()
 

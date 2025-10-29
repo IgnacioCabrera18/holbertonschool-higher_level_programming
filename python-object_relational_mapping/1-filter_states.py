@@ -17,9 +17,12 @@ if __name__ == "__main__":
             passwd=mysql_password,
             db=database_name
         )
-        cr = db.cursor()
-        cr.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id ASC")
-        states = cr.fetchall()
+        cursor = db.cursor()
+        cursor.execute(
+            "SELECT * FROM states "
+            "WHERE name LIKE BINARY 'N%' ORDER BY id ASC"
+            )
+        states = cursor.fetchall()
 
         for state in states:
             print(state)

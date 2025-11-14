@@ -28,7 +28,7 @@ def products():
 
     if source not in loaders:
         return render_template("product_display.html",
-                               products=None,
+                               products=[],
                                error="Wrong source")
 
     products = loaders[source]()
@@ -43,7 +43,7 @@ def products():
 
         if not filtered:
             return render_template("product_display.html",
-                                   products=None,
+                                   products=[],
                                    error="Product not found")
 
         products = filtered

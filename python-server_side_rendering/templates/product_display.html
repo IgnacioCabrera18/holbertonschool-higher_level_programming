@@ -13,13 +13,19 @@
             </tr>
         </thead>
         <tbody>
-            {% for product in products %}
-            <tr>
-                <td>{{product.name}}</td>
-                <td>{{product.category}}</td>
-                <td>{{product.price}}</td>
-            </tr>
-            {% endfor %}
+            {% if products %}
+                {% for product in products %}
+                <tr>
+                    <td>{{product.name}}</td>
+                    <td>{{product.category}}</td>
+                    <td>{{product.price}}</td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="3">{{ error }}</td>
+                </tr>
+            {% endif %}
         </tbody>
     </table>
 </body>

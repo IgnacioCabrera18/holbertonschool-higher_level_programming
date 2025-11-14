@@ -1,14 +1,14 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import json
 import csv
 
 app = Flask(__name__)
 
-def json():
+def load_json():
     with open("products.json", "r") as j:
         return json.load(j)
 
-def csv():
+def load_csv():
     data = []
     with open("products.csv", "r") as c:
         csv = csv.DictReader(c)
@@ -27,19 +27,27 @@ def products():
     }
 
     if source not in loaders:
-        return {'error': 'nothing to load'}
+        return render_template("product_display.html",
+                               products=None,
+                               error="Wrong source")
 
     products = loaders[source]()
 
     if product_id:
-        filtered_products = []
-        target_id = int(product_id)
+        filtered = []
+        pid = int(product_id)
 
         for p in products:
-            if int(p["id"]) == target_id:
-                filtered_products.append(p)
+            if int(p["id"]) == pid:
+                filtered.append(p)
 
-        products = filtered_products
+        if not filtered:
+            return render_template("product_display.html",
+                                   products=None,
+                                   error="Product not found")
 
-        if not products:
-            return {'error': 'not product'}
+        products = filtered
+
+    return render_template("product_display.html",
+                           products=products,
+                           error=None)

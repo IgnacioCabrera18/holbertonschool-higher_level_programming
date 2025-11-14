@@ -12,7 +12,7 @@ def load_csv():
     data = []
     with open("products.csv", "r") as c:
         reader = csv.DictReader(c)
-        for row in csv:
+        for row in reader:
             data.append(row)
     return data
 

@@ -11,7 +11,7 @@ def load_json():
 def load_csv():
     data = []
     with open("products.csv", "r") as c:
-        csv = csv.DictReader(c)
+        reader = csv.DictReader(c)
         for row in csv:
             data.append(row)
     return data
